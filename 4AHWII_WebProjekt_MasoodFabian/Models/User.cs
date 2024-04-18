@@ -29,6 +29,11 @@
             Newsletter = newsletter;
         }
 
+        public User()
+        {
+
+        }
+
         public string ToString()
         {
             return "Username:" + Username + "Email: " + Email + "Vorname: " + Vorname + "Nachname: " + Nachname
