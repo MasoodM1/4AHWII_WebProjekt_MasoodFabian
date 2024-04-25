@@ -11,10 +11,9 @@
         public string Telefon { get; set; }
         public string Adresse { get; set; }
         public DateTime Geburtsdatum { get; set; }
-        public bool IsAdmin { get; set; }
         public bool Newsletter { get; set; }
 
-        public User(int id, string username, string password, string email, string vorname, string nachname, string phoneNumber, string address, DateTime geburtsdatum, bool isAdmin, bool newsletter)
+        public User(int id, string username, string password, string email, string vorname, string nachname, string phoneNumber, string address, DateTime geburtsdatum, bool newsletter)
         {
             Id = id;
             Username = username;
@@ -25,7 +24,6 @@
             Telefon = phoneNumber;
             Adresse = address;
             Geburtsdatum = geburtsdatum;
-            IsAdmin = isAdmin;
             Newsletter = newsletter;
         }
 
@@ -34,7 +32,7 @@
 
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return "Username:" + Username + "Email: " + Email + "Vorname: " + Vorname + "Nachname: " + Nachname
                 + "Phone: " + Telefon + "Geburtsdatum: " + Geburtsdatum;
