@@ -21,6 +21,16 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Controllers
             return View();
         }
 
+        public IActionResult Register()
+        {
+            User user = new()
+            {
+                Geburtsdatum = DateTime.Now
+            };
+            // Anzeige des Registrierungsformulars
+            return View(user);
+        }
+
         static bool isSpecialCharacter(char c)
         {
             string specialCharacters = "!@#$%^&*()-_=+[]{}|;:'\",.<>/?";
