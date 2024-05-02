@@ -32,7 +32,7 @@ namespace _4AHWII_WebProjekt_MasoodFabian
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Register}/{action=Register}/{id?}");
 
             app.Run();
         }
