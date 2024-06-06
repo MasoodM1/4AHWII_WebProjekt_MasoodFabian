@@ -2,8 +2,6 @@
 using _4AHWII_WebProjekt_MasoodFabian.Models;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
-using System.Linq;
 using _4AHWII_WebProjekt_MasoodFabian.Models.DB;
 
 namespace _4AHWII_WebProjekt_MasoodFabian.Controllers
