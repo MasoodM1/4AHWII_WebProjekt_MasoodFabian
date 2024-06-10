@@ -12,7 +12,7 @@ namespace _4AHWII_WebProjekt_MasoodFabian
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddDbContext<DbManager>(ServiceLifetime.Singleton);
+            builder.Services.AddDbContext<DbManager>(ServiceLifetime.Scoped);
 
             builder.Services.AddHttpContextAccessor();
             
