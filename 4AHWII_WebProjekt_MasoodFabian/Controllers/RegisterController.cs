@@ -71,23 +71,36 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Controllers
             {
                 var passwordHasher = new PasswordHasher<User>();
                 user.Passwort = passwordHasher.HashPassword(user, user.Passwort);
-                _dbManager.Add(user);
-                int result = await _dbManager.SaveChangesAsync();
-                if (result == 0)
+                _dbManager.Users.Add(user);
+                try
                 {
-                    return View("Message", new Message()
+                    int result = await _dbManager.SaveChangesAsync();
+                    if (result == 0)
                     {
-                        Title = "Registrierung",
-                        MessageText = "Sie konnten leider nicht registriert werden!",
-                        Solution = "Bitte versuchen Sie es später erneut!"
-                    });
+                        return View("Message", new Message()
+                        {
+                            Title = "Registrierung",
+                            MessageText = "Sie konnten leider nicht registriert werden!",
+                            Solution = "Bitte versuchen Sie es später erneut!"
+                        });
+                    }
+                    else
+                    {
+                        return View("Message", new Message()
+                        {
+                            Title = "Registrierung",
+                            MessageText = "Sie wurden erfolgreich registriert!"
+                        });
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
+                    Console.WriteLine("Error während der User Speicherung: " + ex.Message);
                     return View("Message", new Message()
                     {
                         Title = "Registrierung",
-                        MessageText = "Sie wurden erfolgreich registriert!"
+                        MessageText = "Ein Fehler ist aufgetreten!",
+                        Solution = ex.Message
                     });
                 }
             }

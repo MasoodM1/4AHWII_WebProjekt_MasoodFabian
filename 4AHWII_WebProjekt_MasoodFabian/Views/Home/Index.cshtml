@@ -1,8 +1,11 @@
-﻿@{
+﻿@model IEnumerable<_4AHWII_WebProjekt_MasoodFabian.Models.BlogPost>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <h1>Startseite</h1>
+
 <p>
     @if (Context.Session.GetInt32("userId") != null)
     {
@@ -18,3 +21,17 @@
     </p>
     }
 </p>
+
+<div>
+    <h2>Alle Blog-Posts</h2>
+    <ul>
+        @foreach (var post in Model)
+        {
+            <li>
+                <h3>@post.Title</h3>
+                <p>@post.Content</p>
+                <p><small>Veröffentlicht am: @post.DatePosted</small></p>
+            </li>
+        }
+    </ul>
+</div>
