@@ -1,0 +1,43 @@
+﻿@model _4AHWII_WebProjekt_MasoodFabian.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-dark">
+    <form asp-controller="Login" asp-action="Login" method="post" class="form">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Login</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" asp-for="Username" /></td>
+                    <td>
+                        <span asp-validation-for="Username"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Passwort</td>
+                    <td><input type="password" asp-for="Passwort" /></td>
+                    <td>
+                        <span asp-validation-for="Passwort"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Login" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Sie haben nock kein Konto? <br />
+            <a asp-controller="Register" asp-action="Register">Jetzt Anmelden</a>
+        </p>
+    </form>
+</div>
+

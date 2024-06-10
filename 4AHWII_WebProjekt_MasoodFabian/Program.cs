@@ -14,6 +14,17 @@ namespace _4AHWII_WebProjekt_MasoodFabian
 
             builder.Services.AddDbContext<DbManager>(ServiceLifetime.Singleton);
 
+            builder.Services.AddHttpContextAccessor();
+            
+            builder.Services.AddDistributedMemoryCache();
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -31,9 +42,11 @@ namespace _4AHWII_WebProjekt_MasoodFabian
 
             app.UseAuthorization();
 
+            app.UseSession();
+
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Register}/{action=Register}/{id?}");
+                pattern: "{controller=Login}/{action=Login}/{id?}");
 
             app.Run();
         }

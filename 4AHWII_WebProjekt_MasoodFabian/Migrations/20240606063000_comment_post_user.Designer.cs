@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _4AHWII_WebProjekt_MasoodFabian.Models.DB;
 
@@ -11,9 +12,11 @@ using _4AHWII_WebProjekt_MasoodFabian.Models.DB;
 namespace _4AHWII_WebProjekt_MasoodFabian.Migrations
 {
     [DbContext(typeof(DbManager))]
-    partial class DbManagerModelSnapshot : ModelSnapshot
+    [Migration("20240606063000_comment_post_user")]
+    partial class comment_post_user
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +55,7 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Posts");
+                    b.ToTable("BlogPost");
                 });
 
             modelBuilder.Entity("_4AHWII_WebProjekt_MasoodFabian.Models.Comment", b =>
@@ -79,7 +82,7 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("_4AHWII_WebProjekt_MasoodFabian.Models.User", b =>
