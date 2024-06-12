@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace _4AHWII_WebProjekt_MasoodFabian.Models
 {
     public class BlogPost
     {
         public int Id { get; set; }
-        [Required]
-        [StringLength(100)]
         public string Title { get; set; }
 
         [Required]
@@ -19,9 +15,6 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Models
         public DateTime DatePosted { get; set; }
 
         public User User { get; set; }
-
-        public List<Comment> Comments { get; set; }
-
         public BlogPost()
         {
         }

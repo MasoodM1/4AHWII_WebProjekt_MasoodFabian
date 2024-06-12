@@ -14,45 +14,36 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="text" asp-for="Username" placeholder="Username"/></td>
-                    <td>
-                        <span asp-validation-for="Username"></span>
-                    </td>
+                    <td><input type="text" asp-for="Username" placeholder="Username" /></td>
+                    <td><span asp-validation-for="Username" class="text-danger"></span></td>
                 </tr>
                 <tr>
-                    <td><input type="password" asp-for="Passwort" placeholder="Passwort"/></td>
-                    <td>
-                        <span asp-validation-for="Passwort"></span>
-                    </td>
+                    <td><input type="password" asp-for="Passwort" placeholder="Passwort" /></td>
+                    <td><span asp-validation-for="Passwort" class="text-danger"></span></td>
                 </tr>
                 <tr>
-                    <td><input type="email" asp-for="Email" placeholder="Email"/></td>
-                    <td>
-                        <span asp-validation-for="Email"></span>
-                    </td>
+                    <td><input type="email" asp-for="Email" placeholder="Email" /></td>
+                    <td><span asp-validation-for="Email" class="text-danger"></span></td>
                 </tr>
                 <tr>
-                    <td><input type="text" asp-for="Vorname" rows="4" cols="30" placeholder="Vorname"></input></td>
+                    <td><input type="text" asp-for="Vorname" placeholder="Vorname" /></td>
                 </tr>
                 <tr>
-                    <td><input type="text" asp-for="Nachname" rows="4" cols="30" placeholder="Nachname"></input></td>
+                    <td><input type="text" asp-for="Nachname" placeholder="Nachname" /></td>
                 </tr>
                 <tr>
-                    <td><input type="tel" asp-for="Telefon" rows="4" cols="30" placeholder="Telefon"></input></td>
+                    <td><input type="tel" asp-for="Telefon" placeholder="Telefon" /></td>
                 </tr>
                 <tr>
-                    <td><input type="text" asp-for="Adresse" rows="4" cols="30" placeholder="Adresse"></input></td>
+                    <td><input type="text" asp-for="Adresse" placeholder="Adresse" /></td>
                 </tr>
                 <tr>
-                    <td><input type="date" asp-for="Geburtsdatum" rows="4" cols="30" placeholder="Geburtsdatum"></input></td>
-                    <td>
-                        <span asp-validation-for="Geburtsdatum"></span>
-                    </td>
+                    <td><input type="date" asp-for="Geburtsdatum" placeholder="Geburtsdatum" /></td>
+                    <td><span asp-validation-for="Geburtsdatum" class="text-danger"></span></td>
                 </tr>
                 <tr>
-                    <td><input type="checkbox" asp-for="Newsletter" rows="4" cols="30"></input> Newsletter</td>
+                    <td><input type="checkbox" asp-for="Newsletter" /> Newsletter</td>
                 </tr>
-
                 <tr>
                     <td>
                         <input type="submit" value="registrieren" />

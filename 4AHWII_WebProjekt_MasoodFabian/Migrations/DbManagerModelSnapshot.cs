@@ -55,33 +55,6 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("_4AHWII_WebProjekt_MasoodFabian.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BlogPostId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BlogPostId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Comments");
-                });
-
             modelBuilder.Entity("_4AHWII_WebProjekt_MasoodFabian.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -138,35 +111,6 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("_4AHWII_WebProjekt_MasoodFabian.Models.Comment", b =>
-                {
-                    b.HasOne("_4AHWII_WebProjekt_MasoodFabian.Models.BlogPost", "BlogPost")
-                        .WithMany("Comments")
-                        .HasForeignKey("BlogPostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("_4AHWII_WebProjekt_MasoodFabian.Models.User", "User")
-                        .WithMany("Comments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BlogPost");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("_4AHWII_WebProjekt_MasoodFabian.Models.BlogPost", b =>
-                {
-                    b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("_4AHWII_WebProjekt_MasoodFabian.Models.User", b =>
-                {
-                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

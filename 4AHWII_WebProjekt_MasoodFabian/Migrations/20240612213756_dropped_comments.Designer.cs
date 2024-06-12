@@ -12,8 +12,8 @@ using _4AHWII_WebProjekt_MasoodFabian.Models.DB;
 namespace _4AHWII_WebProjekt_MasoodFabian.Migrations
 {
     [DbContext(typeof(DbManager))]
-    [Migration("20240425071406_Users_2")]
-    partial class Users_2
+    [Migration("20240612213756_dropped_comments")]
+    partial class dropped_comments
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,39 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+
+            modelBuilder.Entity("_4AHWII_WebProjekt_MasoodFabian.Models.BlogPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("DatePosted")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Posts");
+                });
 
             modelBuilder.Entity("_4AHWII_WebProjekt_MasoodFabian.Models.User", b =>
                 {
@@ -70,6 +103,17 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("_4AHWII_WebProjekt_MasoodFabian.Models.BlogPost", b =>
+                {
+                    b.HasOne("_4AHWII_WebProjekt_MasoodFabian.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

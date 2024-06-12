@@ -9,10 +9,12 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Controllers
     public class RegisterController : Controller
     {
         private readonly DbManager _dbManager;
+        private readonly ILogger<RegisterController> _logger;
 
-        public RegisterController(DbManager dbManager)
+        public RegisterController(DbManager dbManager, ILogger<RegisterController> logger)
         {
             _dbManager = dbManager;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -30,7 +32,7 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Controllers
             return View(user);
         }
 
-        static bool isSpecialCharacter(char c)
+        static bool IsSpecialCharacter(char c)
         {
             string specialCharacters = "!@#$%^&*()-_=+[]{}|;:'\",.<>/?";
             return specialCharacters.Contains(c);
@@ -49,17 +51,17 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Controllers
             {
                 return View();
             }
-            if (user.Username == null)
+            if (string.IsNullOrEmpty(user.Username))
             {
                 ModelState.AddModelError("Username", "Bitte geben Sie einen Username ein!");
             }
-            if (user.Passwort == null || user.Passwort.Trim().Length < 8 ||
-               !user.Passwort.Any(char.IsDigit) || !user.Passwort.Any(isSpecialCharacter) ||
+            if (string.IsNullOrEmpty(user.Passwort) || user.Passwort.Trim().Length < 8 ||
+               !user.Passwort.Any(char.IsDigit) || !user.Passwort.Any(IsSpecialCharacter) ||
                !user.Passwort.Any(char.IsLower) || !user.Passwort.Any(char.IsUpper))
             {
                 ModelState.AddModelError("Passwort", "Das Passwort muss mindestens 8 Zeichen lang sein und mindestens eine Zahl, ein Großbuchstabe, ein Kleinbuchstabe und ein Sonderzeichen enthalten!");
             }
-            if (user.Email == null || !IsValidEmail(user.Email))
+            if (string.IsNullOrEmpty(user.Email) || !IsValidEmail(user.Email))
             {
                 ModelState.AddModelError("Email", "Bitte geben Sie eine gültige Email-Adresse ein!");
             }
@@ -67,6 +69,23 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Controllers
             {
                 ModelState.AddModelError("Geburtsdatum", "Bitte geben Sie ein gültiges Geburtsdatum ein!");
             }
+            if (!ModelState.IsValid)
+            {
+                // Log the validation errors
+                _logger.LogWarning("ModelState is not valid. Errors: {Errors}", ModelState);
+
+                // Optionally, print ModelState errors to the console for debugging
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        Console.WriteLine(error.ErrorMessage);
+                    }
+                }
+
+                return View(user);
+            }
+
             if (ModelState.IsValid)
             {
                 var passwordHasher = new PasswordHasher<User>();
