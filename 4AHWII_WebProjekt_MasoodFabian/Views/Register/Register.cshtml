@@ -16,13 +16,13 @@
                 <tr>
                     <td><input type="text" asp-for="Username" placeholder="Username"/></td>
                     <td>
-                        <span asp-validation-for="Username"></span>
+                        <span asp-validation-for="Username" id="errorUsername"></span>
                     </td>
                 </tr>
                 <tr>
                     <td><input type="password" asp-for="Passwort" placeholder="Passwort"/></td>
                     <td>
-                        <span asp-validation-for="Passwort"></span>
+                        <span asp-validation-for="Passwort" id="errorPasswort"></span>
                     </td>
                 </tr>
                 <tr>
@@ -67,3 +67,7 @@
         </p>
     </form>
 </div>
+
+@section Scripts {
+    <script src="~/js/JavaScript.js"></script>
+}
