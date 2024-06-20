@@ -12,8 +12,8 @@ using _4AHWII_WebProjekt_MasoodFabian.Models.DB;
 namespace _4AHWII_WebProjekt_MasoodFabian.Migrations
 {
     [DbContext(typeof(DbManager))]
-    [Migration("20240612213756_dropped_comments")]
-    partial class dropped_comments
+    [Migration("20240620065557_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

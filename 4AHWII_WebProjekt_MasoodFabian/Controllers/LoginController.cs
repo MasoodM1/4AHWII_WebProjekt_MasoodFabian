@@ -33,7 +33,7 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Controllers
 
             if (user == null)
             {
-                ModelState.AddModelError(string.Empty, "Falsche Benutzerdaten");
+                ModelState.AddModelError("Username", "Falsche Benutzerdaten");
                 return View();
             }
 
@@ -46,7 +46,7 @@ namespace _4AHWII_WebProjekt_MasoodFabian.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            ModelState.AddModelError(string.Empty, "Falsche Benutzerdaten");
+            ModelState.AddModelError("Username", "Falsche Benutzerdaten");
             return View();
         }
     }
