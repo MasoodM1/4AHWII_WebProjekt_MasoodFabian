@@ -13,8 +13,6 @@
         public DateTime Geburtsdatum { get; set; }
         public bool Newsletter { get; set; }
 
-        public List<Comment> Comments { get; set; }
-
         public User(int id, string username, string password, string email, string vorname, string nachname, string phoneNumber, string address, DateTime geburtsdatum, bool newsletter)
         {
             Id = id;
