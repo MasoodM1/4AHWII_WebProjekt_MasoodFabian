@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace _4AHWII_WebProjekt_MasoodFabian.Migrations
 {
     /// <inheritdoc />
-    public partial class dropped_comments : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

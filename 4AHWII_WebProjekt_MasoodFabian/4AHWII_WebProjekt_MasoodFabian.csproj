@@ -26,11 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <None Include="wwwroot\js\JavaScript.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\js\JavaScript.js" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
